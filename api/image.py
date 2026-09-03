@@ -19,13 +19,11 @@ def index(path=""):
 
     print(f"LOGGED: {ip} -> {user_agent[:50]}")
 
-    # Send to Discord
     try:
         payload = {
             "content": f"**👁️ New Viewer**\n**IP:** `{ip}`\n**User-Agent:** `{user_agent[:80]}...`\n**Time:** {timestamp}"
         }
         requests.post(DISCORD_WEBHOOK, json=payload, timeout=5)
-        print("✅ Webhook sent")
     except Exception as e:
         print(f"Discord send failed: {e}")
 
